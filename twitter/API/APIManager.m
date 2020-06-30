@@ -7,10 +7,11 @@
 //
 
 #import "APIManager.h"
+#import "Tweet.h"
 
 static NSString * const baseURLString = @"https://api.twitter.com";
-static NSString * const consumerKey = // Enter your consumer key here
-static NSString * const consumerSecret = // Enter your consumer secret here
+static NSString * const consumerKey = @"s4HZV5kUysZR9WbKSYAPbM6ln";
+static NSString * const consumerSecret = @"QmmXlFlRcyOrO6Qu8TjsHmiMb5AGP1RqWfNRs7hcMILaqS9SR9";
 
 @interface APIManager()
 
@@ -49,17 +50,20 @@ static NSString * const consumerSecret = // Enter your consumer secret here
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
     
-    [self GET:@"1.1/statuses/home_timeline.json"
-   parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+    [self GET:@"1.1/statuses/home_timeline.json" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
        
        // Manually cache the tweets. If the request fails, restore from cache if possible.
        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tweetDictionaries];
        [[NSUserDefaults standardUserDefaults] setValue:data forKey:@"hometimeline_tweets"];
 
-       completion(tweetDictionaries, nil);
+       //completion(tweetDictionaries, nil);
        
+        NSMutableArray *tweetsM  = [Tweet tweetsWithArray:tweetDictionaries];
+        NSArray *tweets = [tweetsM copy];
+        completion(tweets, nil);
+        
    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-       
+       /*
        NSArray *tweetDictionaries = nil;
        
        // Fetch tweets from cache if possible
@@ -69,6 +73,8 @@ static NSString * const consumerSecret = // Enter your consumer secret here
        }
        
        completion(tweetDictionaries, error);
+        */
+       completion(nil, error);
    }];
 }
 
