@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UIRefreshControl * refreshControl;
 
 @end
 
@@ -26,22 +27,31 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getTimeline) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self getTimeline];
+    
+}
+
+- (void)getTimeline{
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             self.tweets = [tweets mutableCopy];
             
-            [self.tableView reloadData];
-            
             for (Tweet *tweet in tweets) {
                 NSString *text = tweet.text;
                 NSLog(@"%@", text);
             }
+            [self.tableView reloadData];
              
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -66,6 +76,7 @@
     
     cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.favLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    cell.replyLabel.text = @"";
     
     if  (tweet.user.profilePicURLString != nil){
         NSURL *profilePicURL = [NSURL URLWithString:tweet.user.profilePicURLString];
