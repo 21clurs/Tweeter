@@ -187,6 +187,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="zZB-hJ-Qtg"/>
                                                     </constraints>
                                                     <state key="normal" image="favor-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="0UH-Ih-ntn" eventType="touchUpInside" id="XfT-Mx-qwa"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8u-X4-SrJ">
                                                     <rect key="frame" x="154" y="100" width="30" height="30"/>
@@ -195,6 +198,9 @@
                                                         <constraint firstAttribute="width" constant="30" id="bWP-wg-tKb"/>
                                                     </constraints>
                                                     <state key="normal" image="retweet-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="0UH-Ih-ntn" eventType="touchUpInside" id="rVW-o9-osw"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF8-mp-dLq">
                                                     <rect key="frame" x="64" y="100" width="30" height="30"/>
