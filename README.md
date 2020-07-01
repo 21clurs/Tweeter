@@ -15,8 +15,8 @@ The following **required** functionality is completed:
 - [x] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
 - [x] User can pull to refresh.
 - [ ] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet.
-- [ ] User can compose a new tweet by tapping on a compose button.
-- [ ] Using AutoLayout, the Tweet cell should adjust its layout for iPhone 11, Pro and SE device sizes as well as accommodate device rotation.
+- [x] User can compose a new tweet by tapping on a compose button.
+- [x] Using AutoLayout, the Tweet cell should adjust its layout for iPhone 11, Pro and SE device sizes as well as accommodate device rotation.
 - [ ] User should display the relative timestamp for each tweet "8m", "7h"
 - [ ] Tweet Details Page: User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
 
