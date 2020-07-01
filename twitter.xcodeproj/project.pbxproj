@@ -20,6 +20,7 @@
 		F94319A524AAA16500D9E2FA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F94319A424AAA16500D9E2FA /* User.m */; };
 		F94319A824AAA47500D9E2FA /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = F94319A724AAA47500D9E2FA /* Tweet.m */; };
 		F94319AE24AAE58D00D9E2FA /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94319AD24AAE58D00D9E2FA /* TweetCell.m */; };
+		F999A41D24ABF0A500FC2920 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F999A41C24ABF0A400FC2920 /* ComposeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		F94319A724AAA47500D9E2FA /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		F94319AC24AAE58D00D9E2FA /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		F94319AD24AAE58D00D9E2FA /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		F999A41B24ABF0A400FC2920 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		F999A41C24ABF0A400FC2920 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 		6AD2790320BCC01B0085BC29 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F999A41B24ABF0A400FC2920 /* ComposeViewController.h */,
+				F999A41C24ABF0A400FC2920 /* ComposeViewController.m */,
 				6AD2790420BCC0380085BC29 /* LoginViewController.h */,
 				6AD2790520BCC0380085BC29 /* LoginViewController.m */,
 				6AD2790720BCC04D0085BC29 /* TimelineViewController.h */,
@@ -252,6 +257,7 @@
 				F94319AE24AAE58D00D9E2FA /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				F94319A524AAA16500D9E2FA /* User.m in Sources */,
+				F999A41D24ABF0A500FC2920 /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				F94319A824AAA47500D9E2FA /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
