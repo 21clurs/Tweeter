@@ -64,6 +64,28 @@
     
 }
 - (IBAction)didTapRetweet:(id)sender {
+    self.tweet.retweeted = !self.tweet.retweeted;
+    
+    if(self.tweet.retweeted == YES){
+        [[APIManager shared]retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if (tweet) {
+                self.tweet = tweet;
+            } else {
+                NSLog(@"Error retweeting tweet");
+            }
+        }];
+    }
+    else{
+        [[APIManager shared]unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if (tweet) {
+                self.tweet = tweet;
+                
+            } else {
+                NSLog(@"Error unretweeting tweet");
+            }
+        }];
+    }
+    [self refreshData];
 }
 
 - (void)refreshData{
@@ -78,6 +100,15 @@
         [self.favButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
         self.favLabel.textColor = UIColor.darkGrayColor
         ;
+    }
+    
+    if(self.tweet.retweeted == YES){
+        [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+        self.retweetLabel.textColor = UIColor.greenColor;
+    }
+    else{
+        [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
+        self.retweetLabel.textColor = UIColor.darkGrayColor;
     }
 }
 

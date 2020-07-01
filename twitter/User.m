@@ -15,7 +15,8 @@
         self.name = dictionary[@"name"];
         self.screenName = dictionary[@"screen_name"];
         
-        self.profilePicURLString = dictionary[@"profile_image_url_https"];
+        //self.profilePicURLString = dictionary[@"profile_image_url_https"];
+        self.profilePicURLString = [dictionary[@"profile_image_url_https"] stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     }
     return self;
 }

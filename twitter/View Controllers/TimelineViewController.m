@@ -42,12 +42,6 @@
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             self.tweets = [tweets mutableCopy];
-            /*
-            for (Tweet *tweet in tweets) {
-                NSString *text = tweet.text;
-                NSLog(@"%@", text);
-            }
-            */
             [self.tableView reloadData];
              
         } else {
