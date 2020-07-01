@@ -8,6 +8,7 @@
 
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "APIManager.h"
 
 @implementation TweetCell
 
@@ -21,13 +22,6 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)didTapFavorite:(id)sender {
-    self.tweet.favorited = !self.tweet.favorited;
-    
-    
-}
-- (IBAction)didTapRetweet:(id)sender {
-}
 
 - (void)setTweet:(Tweet *)tweet{
     _tweet = tweet;
@@ -37,14 +31,56 @@
     self.createdAtLabel.text = tweet.createdAtString;
     self.tweetTextLabel.text = tweet.text;
     
-    self.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
-    self.favLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    [self refreshData];
     self.replyLabel.text = @"";
     
     self.profilePicView.image = nil;
     NSURL *profilePicURL = [NSURL URLWithString:tweet.user.profilePicURLString];
     [self.profilePicView setImageWithURL:profilePicURL];
 }
+
+- (IBAction)didTapFavorite:(id)sender {
+    self.tweet.favorited = !self.tweet.favorited;
+    
+    if(self.tweet.favorited == YES){
+        [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if (tweet) {
+                self.tweet = tweet;
+            } else {
+                NSLog(@"Error favoriting tweet");
+            }
+        }];
+    }
+    else{
+        [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if (tweet) {
+                self.tweet = tweet;
+            } else {
+                NSLog(@"Error unfavoriting tweet");
+            }
+        }];
+    }
+    [self refreshData];
+    
+}
+- (IBAction)didTapRetweet:(id)sender {
+}
+
+- (void)refreshData{
+    self.retweetLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+    self.favLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+    
+    if(self.tweet.favorited == YES){
+        [self.favButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+        self.favLabel.textColor = UIColor.redColor;
+    }
+    else{
+        [self.favButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
+        self.favLabel.textColor = UIColor.darkGrayColor
+        ;
+    }
+}
+
 
 
 @end
