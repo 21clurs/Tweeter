@@ -113,6 +113,10 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.delegate returnToTimeline];
+}
+
 /*
 #pragma mark - Navigation
 

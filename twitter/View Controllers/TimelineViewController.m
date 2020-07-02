@@ -15,7 +15,7 @@
 #import "LoginViewController.h"
 #import "TweetDetailViewController.h"
 
-@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, DetailViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -87,12 +87,17 @@
         Tweet *tweet = self.tweets[indexPath.row];
         TweetDetailViewController *tweetController = [segue destinationViewController];
         tweetController.tweet = tweet;
+        tweetController.delegate = self;
     }
     
 }
 
 - (void) didTweet:(Tweet *)tweet{
     [self.tweets insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+}
+
+- (void)returnToTimeline{
     [self.tableView reloadData];
 }
 

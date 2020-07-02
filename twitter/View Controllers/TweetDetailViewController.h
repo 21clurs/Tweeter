@@ -11,8 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol DetailViewControllerDelegate
+
+- (void)returnToTimeline;
+
+@end
+
 @interface TweetDetailViewController : UIViewController
 @property (nonatomic,strong) Tweet *tweet;
+@property (nonatomic, weak) id<DetailViewControllerDelegate> delegate;
 
 @end
 
