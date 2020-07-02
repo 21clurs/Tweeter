@@ -18,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.composeTextView becomeFirstResponder];
     // Do any additional setup after loading the view.
 }
 - (IBAction)publishTweetAction:(id)sender {

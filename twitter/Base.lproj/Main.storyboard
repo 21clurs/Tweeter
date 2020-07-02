@@ -61,16 +61,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Tweet text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6cX-Ee-q1q">
-                                <rect key="frame" x="20" y="129" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6cX-Ee-q1q">
+                                <rect key="frame" x="20" y="72" width="374" height="160"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="FJS-Ht-odh"/>
+                                </constraints>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="6cX-Ee-q1q" secondAttribute="trailing" id="IPy-Et-Ava"/>
+                            <constraint firstItem="6cX-Ee-q1q" firstAttribute="leading" secondItem="FVA-9F-tUv" secondAttribute="leadingMargin" id="Mjo-nn-WbA"/>
+                            <constraint firstItem="6cX-Ee-q1q" firstAttribute="top" secondItem="FVA-9F-tUv" secondAttribute="topMargin" constant="16" id="bCt-SJ-T7l"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mRY-2r-lF1"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZxQ-CY-GNJ">
