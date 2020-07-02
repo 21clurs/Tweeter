@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) User *user;
 @property (nonatomic,strong) NSString *createdAtString;
 @property (nonatomic,strong) User *retweetedByUser;
+@property (nonatomic,strong) NSString *dateCreatedString;
+@property (nonatomic,strong) NSString *timeCreatedString;
 
 -(instancetype)initWithDictionary:(NSDictionary*)dictionary;
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries;

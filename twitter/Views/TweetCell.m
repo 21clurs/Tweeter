@@ -32,7 +32,6 @@
     self.tweetTextLabel.text = tweet.text;
     
     [self refreshData];
-    self.replyLabel.text = @"";
     
     self.profilePicView.image = nil;
     NSURL *profilePicURL = [NSURL URLWithString:tweet.user.profilePicURLString];
