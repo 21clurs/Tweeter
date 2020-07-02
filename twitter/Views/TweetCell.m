@@ -64,9 +64,9 @@
     
 }
 - (IBAction)didTapRetweet:(id)sender {
-    self.tweet.retweeted = !self.tweet.retweeted;
+    //self.tweet.retweeted = !self.tweet.retweeted;
     
-    if(self.tweet.retweeted == YES){
+    if(self.tweet.retweeted == NO){
         [[APIManager shared]retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if (tweet) {
                 self.tweet = tweet;
@@ -78,7 +78,10 @@
     else{
         [[APIManager shared]unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if (tweet) {
-                self.tweet = tweet;
+                //self.tweet = tweet;
+                self.tweet.retweeted=NO;
+                self.tweet.retweetCount = tweet.retweetCount-1;
+                [self refreshData];
                 
             } else {
                 NSLog(@"Error unretweeting tweet");
