@@ -92,8 +92,8 @@
 }
 
 - (void)refreshData{
-    self.retweetLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
-    self.favLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+    [self.retweetButton setTitle:[NSString stringWithFormat:@"%d", self.tweet.retweetCount] forState:UIControlStateNormal];
+    [self.favButton setTitle:[NSString stringWithFormat:@"%d", self.tweet.favoriteCount] forState:UIControlStateNormal];
     
     if(self.tweet.favorited == YES){
         [self.favButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
