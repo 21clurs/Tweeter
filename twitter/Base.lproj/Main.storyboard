@@ -177,7 +177,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="06m-sG-1tf"/>
                                                         <constraint firstAttribute="width" constant="85" id="bWP-wg-tKb"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                     <state key="normal" title="Retweets" image="retweet-icon">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -216,7 +216,7 @@
                                                         <constraint firstAttribute="width" constant="82" id="xpf-5x-rbu"/>
                                                         <constraint firstAttribute="height" constant="30" id="zZB-hJ-Qtg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                     <state key="normal" title="Favors" image="favor-icon">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>

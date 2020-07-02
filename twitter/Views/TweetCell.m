@@ -97,21 +97,21 @@
     
     if(self.tweet.favorited == YES){
         [self.favButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
-        self.favLabel.textColor = UIColor.redColor;
+        [self.favButton setTitleColor:UIColor.redColor forState:UIControlStateNormal];
     }
     else{
         [self.favButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
-        self.favLabel.textColor = UIColor.darkGrayColor
+        [self.favButton setTitleColor:UIColor.darkGrayColor forState:UIControlStateNormal];
         ;
     }
     
     if(self.tweet.retweeted == YES){
         [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
-        self.retweetLabel.textColor = UIColor.greenColor;
+        [self.retweetButton setTitleColor:UIColor.systemGreenColor forState:UIControlStateNormal];
     }
     else{
         [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
-        self.retweetLabel.textColor = UIColor.darkGrayColor;
+        [self.retweetButton setTitleColor:UIColor.darkGrayColor forState:UIControlStateNormal];
     }
 }
 
