@@ -85,7 +85,7 @@
             }
         }];
     }
-    [self refreshData];
+    //[self refreshData];
 }
 
 - (void)refreshData{

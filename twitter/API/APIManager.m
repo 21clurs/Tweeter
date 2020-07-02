@@ -76,7 +76,7 @@ static NSString * const consumerSecret = @"QmmXlFlRcyOrO6Qu8TjsHmiMb5AGP1RqWfNRs
 }
 
 - (void) postStatusWithUpdate: (NSString *)text completion:(void(^)(Tweet *, NSError *))completion{
-    NSString *urlString = @"1.1/statuses/update.json";
+    NSString *urlString = @"1.1/statuses/update.json?tweet_mode=extended";
     NSDictionary *parameters = @{@"status":text}; //what is this syntax???
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary){
         Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDictionary];
@@ -87,7 +87,7 @@ static NSString * const consumerSecret = @"QmmXlFlRcyOrO6Qu8TjsHmiMb5AGP1RqWfNRs
 }
 
 - (void) favorite: (Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
-    NSString *urlString = @"1.1/favorites/create.json";
+    NSString *urlString = @"1.1/favorites/create.json?tweet_mode=extended";
     NSDictionary *parameters = @{@"id": tweet.idStr};
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
@@ -97,7 +97,7 @@ static NSString * const consumerSecret = @"QmmXlFlRcyOrO6Qu8TjsHmiMb5AGP1RqWfNRs
     }];
 }
 - (void) unfavorite: (Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
-    NSString *urlString = @"1.1/favorites/destroy.json";
+    NSString *urlString = @"1.1/favorites/destroy.json?tweet_mode=extended";
     NSDictionary *parameters = @{@"id": tweet.idStr};
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
