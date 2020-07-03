@@ -48,6 +48,16 @@ static NSString * const consumerSecret = @"QmmXlFlRcyOrO6Qu8TjsHmiMb5AGP1RqWfNRs
     return self;
 }
 
+- (void) getSelfProfileWithCompletion:(void(^)(NSDictionary *userInfo, NSError *error))completion{
+    [self GET:@"1.1/account/verify_credentials.json?tweet_mode=extended" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable selfDictionary) {
+        //NSLog(@"%@",selfDictionary);
+        completion(selfDictionary, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error){
+        completion(nil, error);
+    }];
+}
+
+
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
     
     [self GET:@"1.1/statuses/home_timeline.json?tweet_mode=extended" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {

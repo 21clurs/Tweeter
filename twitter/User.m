@@ -17,6 +17,12 @@
         
         //self.profilePicURLString = dictionary[@"profile_image_url_https"];
         self.profilePicURLString = [dictionary[@"profile_image_url_https"] stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+        self.bannerPicURLString = [dictionary[@"profile_banner_url"] stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+        
+        self.tagline = dictionary[@"description"];
+        self.userIDString = dictionary[@"id_str"];
+        self.followerCount = dictionary[@"followers_count"];
+        self.followingCount = dictionary[@"friends_count"];
     }
     return self;
 }

@@ -14,6 +14,7 @@
 
 + (instancetype)shared;
 
+- (void) getSelfProfileWithCompletion:(void(^)(NSDictionary *userInfo, NSError *error))completion;
 - (void) getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
 - (void) getUserTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
 - (void) postStatusWithUpdate: (NSString *)text completion:(void(^)(Tweet *, NSError *))completion;
