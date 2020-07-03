@@ -9,6 +9,7 @@
 #import "TweetDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
+#import "ComposeViewController.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicView;
@@ -117,14 +118,17 @@
     [self.delegate returnToTimeline];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.replyToTweet = self.tweet;
 }
-*/
+
 
 @end

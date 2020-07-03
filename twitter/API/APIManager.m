@@ -75,9 +75,35 @@ static NSString * const consumerSecret = @"QmmXlFlRcyOrO6Qu8TjsHmiMb5AGP1RqWfNRs
    }];
 }
 
+- (void) getUserTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
+    [self GET:@"1.1/statuses/user_timeline.json?tweet_mode=extended" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable tweetDictionaries) {
+        
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tweetDictionaries];
+        [[NSUserDefaults standardUserDefaults] setValue:data forKey:@"hometimeline_tweets"];
+        
+         NSMutableArray *tweetsM  = [Tweet tweetsWithArray:tweetDictionaries];
+         NSArray *tweets = [tweetsM copy];
+         completion(tweets, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil,error);
+    }];
+}
+
 - (void) postStatusWithUpdate: (NSString *)text completion:(void(^)(Tweet *, NSError *))completion{
     NSString *urlString = @"1.1/statuses/update.json?tweet_mode=extended";
     NSDictionary *parameters = @{@"status":text}; //what is this syntax???
+    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary){
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDictionary];
+        completion(tweet,nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+- (void) postWithUpdate: (NSString *)text replyTo: (NSString *)replyingToID completion:(void(^)(Tweet *, NSError *))completion{
+    NSString *urlString = @"1.1/statuses/update.json?tweet_mode=extended";
+    NSDictionary *parameters = @{@"status":text, @"in_reply_to_status_id":replyingToID}; //what is this syntax???
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary){
         Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDictionary];
         completion(tweet,nil);

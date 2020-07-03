@@ -9,6 +9,7 @@
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
+#import "ComposeViewController.h"
 
 @implementation TweetCell
 
@@ -89,7 +90,17 @@
     }
     //[self refreshData];
 }
+/*
+- (IBAction)didTapReply:(id)sender {
+   //ComposeViewController *composeViewController = [[ComposeViewController alloc] init];
+    NSLog(@"Reply noted");
+    // do any setup you need for myNewVC
 
+    
+    //[self presentModalViewController:composeViewController animated:YES];
+    
+}
+*/
 - (void)refreshData{
     [self.retweetButton setTitle:[NSString stringWithFormat:@"%d", self.tweet.retweetCount] forState:UIControlStateNormal];
     [self.favButton setTitle:[NSString stringWithFormat:@"%d", self.tweet.favoriteCount] forState:UIControlStateNormal];

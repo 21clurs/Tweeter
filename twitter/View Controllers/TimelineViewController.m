@@ -81,6 +81,20 @@
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
     }
+    /*
+    else if([sender isKindOfClass:[UIButton class]]){
+        UIButton *tappedButton = sender;
+        UITableViewCell *tappedCell = tappedButton.superview;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        
+        Tweet *tweet = self.tweets[indexPath.row]; //the tweet we are replying to...
+        
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.replyToTweet = tweet;
+        composeController.delegate = self;
+    }
+     */
     else if([sender isKindOfClass:[TweetCell class]]){
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];

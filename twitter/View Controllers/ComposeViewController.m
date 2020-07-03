@@ -20,22 +20,38 @@
     [super viewDidLoad];
     
     [self.composeTextView becomeFirstResponder];
+    
+    if(self.replyToTweet!=nil){
+        self.composeTextView.text = [NSString stringWithFormat:@"@%@ ", self.replyToTweet.user.screenName];
+    }
     // Do any additional setup after loading the view.
 }
 - (IBAction)publishTweetAction:(id)sender {
     NSString *tweetText = self.composeTextView.text;
-    [[APIManager shared] postStatusWithUpdate:tweetText completion:^(Tweet *tweet, NSError *error) {
-        if (error){
-            NSLog(@"Error composing Tweet: %@", error.localizedDescription);
-        }
-        else {
-            [self dismissViewControllerAnimated:YES completion:nil];
-            [self.delegate didTweet:tweet];
-            NSLog(@"Compose Tweet Success!");
-        }
+    if(self.replyToTweet != nil){
+        [[APIManager shared] postWithUpdate:tweetText replyTo:self.replyToTweet.idStr completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                NSLog(@"Error composing Tweet: %@", error.localizedDescription);
+            }
+            else{
+                [self dismissViewControllerAnimated:YES completion:nil];
+                NSLog(@"Compose Tweet Success!");
+            }
+        }];
         
-        
-    }];
+    }
+    else{
+        [[APIManager shared] postStatusWithUpdate:tweetText completion:^(Tweet *tweet, NSError *error) {
+            if (error){
+                NSLog(@"Error composing Tweet: %@", error.localizedDescription);
+            }
+            else {
+                [self dismissViewControllerAnimated:YES completion:nil];
+                [self.delegate didTweet:tweet];
+                NSLog(@"Compose Tweet Success!");
+            }
+        }];
+    }
 }
 - (IBAction)cancelAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
