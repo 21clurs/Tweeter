@@ -111,7 +111,10 @@
     [self.tableView reloadData];
 }
 
-- (void)returnToTimeline{
+- (void)returnToTimeline:(Tweet *)tweet{
+    if(tweet!=nil){
+        [self.tweets insertObject:tweet atIndex:0];
+    }
     [self.tableView reloadData];
 }
 

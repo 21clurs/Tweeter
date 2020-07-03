@@ -69,7 +69,9 @@
     if(self.tweet.retweeted == NO){
         [[APIManager shared]retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if (tweet) {
-                self.tweet = tweet;
+                self.tweet.retweeted = YES;
+                self.tweet.retweetCount = tweet.retweetCount;
+                [self refreshData];
             } else {
                 NSLog(@"Error retweeting tweet");
             }

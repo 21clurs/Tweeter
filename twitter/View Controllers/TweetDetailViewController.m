@@ -11,7 +11,7 @@
 #import "APIManager.h"
 #import "ComposeViewController.h"
 
-@interface TweetDetailViewController ()
+@interface TweetDetailViewController () <ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *handleLabel;
@@ -48,7 +48,6 @@
         [[APIManager shared]retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if (tweet) {
                 self.tweet = tweet;
-                self.tweet.retweeted = YES;
                 [self refreshData];
             } else {
                 NSLog(@"Error retweeting tweet");
@@ -115,7 +114,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    [self.delegate returnToTimeline];
+    [self.delegate returnToTimeline:nil];
 }
 
 
@@ -128,6 +127,11 @@
     UINavigationController *navigationController = [segue destinationViewController];
     ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
     composeController.replyToTweet = self.tweet;
+    composeController.delegate = self;
+}
+
+- (void) didTweet:(Tweet *)tweet{
+    //[self.delegate returnToTimeline:tweet didReply:YES];
 }
 
 

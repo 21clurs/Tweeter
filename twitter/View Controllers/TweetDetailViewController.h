@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol DetailViewControllerDelegate
 
-- (void)returnToTimeline;
+- (void)returnToTimeline:(Tweet *)tweet;
 
 @end
 
