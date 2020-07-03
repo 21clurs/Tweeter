@@ -6,12 +6,12 @@
 //  Copyright © 2020 Emerson Malca. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+#import "SelfProfileViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
 #import "User.h"
 
-@interface ProfileViewController ()
+@interface SelfProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhotoView;
 @property (weak, nonatomic) IBOutlet UIImageView *bannerPhotoView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -20,18 +20,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followerCountLabel;
 
+
 @end
 
-@implementation ProfileViewController
+@implementation SelfProfileViewController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*
+    
     [[APIManager shared] getSelfProfileWithCompletion:^(NSDictionary *userInfo, NSError *error) {
         self.user = [[User alloc] initWithDictionary:userInfo];
         [self refreshData];
-    }];*/
+    }];
     [self refreshData];
 }
 

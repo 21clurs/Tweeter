@@ -1,8 +1,8 @@
 //
-//  ProfileViewController.h
+//  SelfProfileViewController.h
 //  twitter
 //
-//  Created by Clara Kim on 7/2/20.
+//  Created by Clara Kim on 7/3/20.
 //  Copyright © 2020 Emerson Malca. All rights reserved.
 //
 
@@ -11,10 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProfileViewController : UIViewController
-
+@interface SelfProfileViewController : UIViewController
 @property (strong, nonatomic) User *user;
-
 @end
 
 NS_ASSUME_NONNULL_END

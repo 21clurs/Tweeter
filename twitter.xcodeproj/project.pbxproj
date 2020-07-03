@@ -23,6 +23,7 @@
 		F999A41D24ABF0A500FC2920 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F999A41C24ABF0A400FC2920 /* ComposeViewController.m */; };
 		F999A46B24AE2E4E00FC2920 /* TweetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F999A46A24AE2E4E00FC2920 /* TweetDetailViewController.m */; };
 		F999A46E24AEC7CF00FC2920 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F999A46D24AEC7CF00FC2920 /* ProfileViewController.m */; };
+		F999A47124AEE5D800FC2920 /* SelfProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F999A47024AEE5D800FC2920 /* SelfProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		F999A46A24AE2E4E00FC2920 /* TweetDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetDetailViewController.m; sourceTree = "<group>"; };
 		F999A46C24AEC7CF00FC2920 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		F999A46D24AEC7CF00FC2920 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		F999A46F24AEE5D800FC2920 /* SelfProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfProfileViewController.h; sourceTree = "<group>"; };
+		F999A47024AEE5D800FC2920 /* SelfProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,8 @@
 				F999A46A24AE2E4E00FC2920 /* TweetDetailViewController.m */,
 				F999A46C24AEC7CF00FC2920 /* ProfileViewController.h */,
 				F999A46D24AEC7CF00FC2920 /* ProfileViewController.m */,
+				F999A46F24AEE5D800FC2920 /* SelfProfileViewController.h */,
+				F999A47024AEE5D800FC2920 /* SelfProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				F94319A524AAA16500D9E2FA /* User.m in Sources */,
 				F999A41D24ABF0A500FC2920 /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
+				F999A47124AEE5D800FC2920 /* SelfProfileViewController.m in Sources */,
 				F94319A824AAA47500D9E2FA /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
