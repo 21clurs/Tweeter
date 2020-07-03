@@ -47,14 +47,18 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. I would like to take a second look at the way I am implementing the view self profile and view other user's profile functionalities. I have them working right now, but I feel that it is fairly unelegant.
-2.
+1. I would like to take a second look at the way I am implementing the view self profile and view other user's profile functionalities. I have them working right now, but I feel that the implementation is unelegant.
+2. Definitely would like to do some of the other extra stories, especially showing imbedded images, and having a user's tweets showing in their profile.
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of implemented user stories on iPhone 11:
 
 <img src='http://g.recordit.co/uU4kPjUMFT.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+Here's a walkthrough of implemented user stories on iPhone SE:
+
+<img src='http://g.recordit.co/1oaP2fiMAG.gif' title='Video Walkthrough Again' width='' alt='Video Walkthrough Again' />
 
 GIF created with [Recordit](https://recordit.co/).
 
@@ -62,6 +66,7 @@ GIF created with [Recordit](https://recordit.co/).
 
 - Challenges with understanding how to use the Twitter API at first, this got better as I used it more
 - I didn't completely understand delegates and tried using them nonetheless, probably causing a lot of my delegate functions to be kind of pointless. I think I have a better understanding of them now, so I would definitely like to go back and fix these if I have the chance.
+- Lots of bugs with retweeting/unretweeting and liking/unliking tweets, especially as one toggles between the timeline view and the detail view. I need to keep testing for those.
 
 ## Credits
 
