@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *handleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tweetCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followerCountLabel;
 
@@ -27,11 +28,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*
-    [[APIManager shared] getSelfProfileWithCompletion:^(NSDictionary *userInfo, NSError *error) {
-        self.user = [[User alloc] initWithDictionary:userInfo];
-        [self refreshData];
-    }];*/
     [self refreshData];
 }
 
@@ -44,6 +40,7 @@
     self.nameLabel.text = self.user.name;
     self.handleLabel.text = [NSString stringWithFormat:@"@%@", self.user.screenName];
     self.taglineLabel.text = self.user.tagline;
+    self.tweetCountLabel.text = [NSString stringWithFormat:@"%@", self.user.tweetCount];
     self.followerCountLabel.text = [NSString stringWithFormat:@"%@", self.user.followerCount];
     self.followingCountLabel.text = [NSString stringWithFormat:@"%@", self.user.followingCount];
     

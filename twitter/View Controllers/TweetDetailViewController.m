@@ -130,9 +130,4 @@
     composeController.delegate = self;
 }
 
-- (void) didTweet:(Tweet *)tweet{
-    //[self.delegate returnToTimeline:tweet didReply:YES];
-}
-
-
 @end

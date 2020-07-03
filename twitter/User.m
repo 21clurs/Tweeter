@@ -21,6 +21,7 @@
         
         self.tagline = dictionary[@"description"];
         self.userIDString = dictionary[@"id_str"];
+        self.tweetCount = dictionary[@"statuses_count"];
         self.followerCount = dictionary[@"followers_count"];
         self.followingCount = dictionary[@"friends_count"];
     }

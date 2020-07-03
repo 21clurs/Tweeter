@@ -87,20 +87,12 @@
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
     }
-    /*
-    else if([sender isKindOfClass:[UIButton class]]){
-        UIButton *tappedButton = sender;
-        UITableViewCell *tappedCell = tappedButton.superview;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-        
-        Tweet *tweet = self.tweets[indexPath.row]; //the tweet we are replying to...
-        
+    else if([segue.identifier isEqualToString:@"replySegue"]){
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-        composeController.replyToTweet = tweet;
         composeController.delegate = self;
+        composeController.replyToTweet = sender;
     }
-     */
     else if([segue.identifier isEqualToString:@"detailSegue"]){
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
@@ -136,7 +128,10 @@
 - (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
     // TODO: Perform segue to profile view controller
     [self performSegueWithIdentifier:@"profileSegue" sender:user];
-    
+}
+
+- (void)tweetCell:(TweetCell *)tweetCell didReply:(Tweet *)tweet{
+    [self performSegueWithIdentifier:@"replySegue" sender:tweet];
 }
 
 @end

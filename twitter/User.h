@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *tagline;
 @property (nonatomic, strong) NSString *userIDString;
+@property (nonatomic, strong) NSNumber *tweetCount;
 @property (nonatomic, strong) NSNumber *followerCount;
 @property (nonatomic, strong) NSNumber *followingCount;
 

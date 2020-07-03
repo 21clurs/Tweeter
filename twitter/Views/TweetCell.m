@@ -23,8 +23,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (void)setTweet:(Tweet *)tweet{
@@ -48,7 +46,10 @@
     if(self.tweet.favorited == YES){
         [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if (tweet) {
-                self.tweet = tweet;
+                //self.tweet = tweet;
+                self.tweet.favoriteCount = tweet.favoriteCount;
+                self.tweet.favorited = YES;
+                [self refreshData];
             } else {
                 NSLog(@"Error favoriting tweet");
             }
@@ -57,18 +58,18 @@
     else{
         [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if (tweet) {
-                self.tweet = tweet;
+                self.tweet.favoriteCount = tweet.favoriteCount;
+                self.tweet.favorited = NO;
+                [self refreshData];
             } else {
                 NSLog(@"Error unfavoriting tweet");
             }
         }];
     }
-    [self refreshData];
+    //[self refreshData];
     
 }
 - (IBAction)didTapRetweet:(id)sender {
-    //self.tweet.retweeted = !self.tweet.retweeted;
-    
     if(self.tweet.retweeted == NO){
         [[APIManager shared]retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if (tweet) {
@@ -94,19 +95,12 @@
             }
         }];
     }
-    //[self refreshData];
 }
-/*
-- (IBAction)didTapReply:(id)sender {
-   //ComposeViewController *composeViewController = [[ComposeViewController alloc] init];
-    NSLog(@"Reply noted");
-    // do any setup you need for myNewVC
 
-    
-    //[self presentModalViewController:composeViewController animated:YES];
-    
+- (IBAction)didTapReply:(id)sender {
+    [self.delegate tweetCell:self didReply:self.tweet];
 }
-*/
+
 - (void)refreshData{
     [self.retweetButton setTitle:[NSString stringWithFormat:@"%d", self.tweet.retweetCount] forState:UIControlStateNormal];
     [self.favButton setTitle:[NSString stringWithFormat:@"%d", self.tweet.favoriteCount] forState:UIControlStateNormal];
