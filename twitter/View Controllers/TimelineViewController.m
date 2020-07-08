@@ -18,13 +18,15 @@
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, DetailViewControllerDelegate, TweetCellDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray *tweets;
+@property (nonatomic, strong) NSMutableArray<Tweet *> *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl * refreshControl;
 
 @end
 
 @implementation TimelineViewController
+
+# pragma mark - Private Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +62,44 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didTapLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    [[APIManager shared] logout];
+}
+
+#pragma mark - ComposeViewControllerDelegate
+
+- (void) didTweet:(Tweet *)tweet{
+    [self.tweets insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+}
+
+#pragma mark - DetailViewControllerDelegate
+
+- (void)returnToTimeline:(Tweet *)tweet{
+    if(tweet!=nil){
+        [self.tweets insertObject:tweet atIndex:0];
+    }
+    [self.tableView reloadData];
+}
+
+#pragma mark - TweetCellDelegate
+
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
+    // TODO: Perform segue to profile view controller
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
+}
+
+- (void)tweetCell:(TweetCell *)tweetCell didReply:(Tweet *)tweet{
+    [self performSegueWithIdentifier:@"replySegue" sender:tweet];
+}
+
+#pragma mark - UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.tweets.count;
 }
@@ -70,7 +110,6 @@
     cell.delegate = self;
     return cell;
 }
-
 
 #pragma mark - Navigation
 
@@ -102,36 +141,6 @@
         tweetController.delegate = self;
     }
     
-}
-
-- (void) didTweet:(Tweet *)tweet{
-    [self.tweets insertObject:tweet atIndex:0];
-    [self.tableView reloadData];
-}
-
-- (void)returnToTimeline:(Tweet *)tweet{
-    if(tweet!=nil){
-        [self.tweets insertObject:tweet atIndex:0];
-    }
-    [self.tableView reloadData];
-}
-
-- (IBAction)didTapLogout:(id)sender {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
-    [[APIManager shared] logout];
-}
-
-- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
-    // TODO: Perform segue to profile view controller
-    [self performSegueWithIdentifier:@"profileSegue" sender:user];
-}
-
-- (void)tweetCell:(TweetCell *)tweetCell didReply:(Tweet *)tweet{
-    [self performSegueWithIdentifier:@"replySegue" sender:tweet];
 }
 
 @end
