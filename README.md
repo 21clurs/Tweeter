@@ -22,18 +22,18 @@ The following **required** functionality is completed:
 
 The following **stretch** features are implemented:
 
-- [ ] User can view their profile in a *profile tab*
+- [x] User can view their profile in a *profile tab*
   - Contains the user header view: picture and tagline
   - Contains a section with the users basic stats: # tweets, # following, # followers
   - [ ] Profile view should include that user's timeline
 - [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. Refer to [[this guide|unretweeting]] for help on implementing unretweeting.
 - [ ] Links in tweets are clickable.
-- [ ] User can tap the profile image in any tweet to see another user's profile
+- [x] User can tap the profile image in any tweet to see another user's profile
   - Contains the user header view: picture and tagline
   - Contains a section with the users basic stats: # tweets, # following, # followers
 - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 - [ ] When composing, you should have a countdown for the number of characters remaining for the tweet (out of 280) (**1 point**)
-- [ ] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
+- [x] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
 - [x] User can reply to any tweet, and replies should be prefixed with the username and the reply_id should be set when posting the tweet (**2 points**)
 - [ ] User sees embedded images in tweet if available
 - [ ] User can switch between timeline, mentions, or profile view through a tab bar (**3 points**)
@@ -42,30 +42,38 @@ The following **stretch** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Added reply to tweet button and functionality in Tweet Cells.
+- [x] UIStackViews in Tweet Cells and Tweet Detail view allows equal spacing of buttons in both vertical and horizontal views.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I would like to take a second look at the way I am implementing the view self profile and view other user's profile functionalities. I have them working right now, but I feel that the implementation is unelegant.
+2. Definitely would like to do some of the other extra stories, especially showing imbedded images, and having a user's tweets showing in their profile.
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of implemented user stories on iPhone 11:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/uU4kPjUMFT.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+Here's a walkthrough of implemented user stories on iPhone SE:
+
+<img src='http://g.recordit.co/1oaP2fiMAG.gif' title='Video Walkthrough Again' width='' alt='Video Walkthrough Again' />
+
+GIF created with [Recordit](https://recordit.co/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- Challenges with understanding how to use the Twitter API at first, this got better as I used it more
+- I didn't completely understand delegates and tried using them nonetheless, probably causing a lot of my delegate functions to be kind of pointless. I think I have a better understanding of them now, so I would definitely like to go back and fix these if I have the chance.
+- Lots of bugs with retweeting/unretweeting and liking/unliking tweets, especially as one toggles between the timeline view and the detail view. I need to keep testing for those.
 
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [DateTools](https://github.com/MatthewYork/DateTools) - Dates and times made easy in iOS
 
 ## License
 
