@@ -26,9 +26,11 @@
 }
 
 - (IBAction)didTapLogin:(id)sender {
+
+    __weak typeof(self) weakSelf = self;
     [[APIManager shared] loginWithCompletion:^(BOOL success, NSError *error) {
         if (success) {
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            [weakSelf performSegueWithIdentifier:@"loginSegue" sender:nil];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }

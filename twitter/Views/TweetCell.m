@@ -44,23 +44,27 @@
     self.tweet.favorited = !self.tweet.favorited;
     
     if(self.tweet.favorited == YES){
+        __weak typeof(self) weakSelf = self;
         [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            __strong typeof (self) strongSelf = weakSelf;
             if (tweet) {
                 //self.tweet = tweet;
-                self.tweet.favoriteCount = tweet.favoriteCount;
-                self.tweet.favorited = YES;
-                [self refreshData];
+                strongSelf.tweet.favoriteCount = tweet.favoriteCount;
+                strongSelf.tweet.favorited = YES;
+                [strongSelf refreshData];
             } else {
                 NSLog(@"Error favoriting tweet");
             }
         }];
     }
     else{
+        __weak typeof(self) weakSelf = self;
         [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            __strong typeof (self) strongSelf = weakSelf;
             if (tweet) {
-                self.tweet.favoriteCount = tweet.favoriteCount;
-                self.tweet.favorited = NO;
-                [self refreshData];
+                strongSelf.tweet.favoriteCount = tweet.favoriteCount;
+                strongSelf.tweet.favorited = NO;
+                [strongSelf refreshData];
             } else {
                 NSLog(@"Error unfavoriting tweet");
             }
@@ -71,24 +75,28 @@
 }
 - (IBAction)didTapRetweet:(id)sender {
     if(self.tweet.retweeted == NO){
+        __weak typeof(self) weakSelf = self;
         [[APIManager shared]retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            __strong typeof (self) strongSelf = weakSelf;
             if (tweet) {
                 // why does setting self.tweet = tweet cause buggy things here.
-                self.tweet.retweeted = YES;
-                self.tweet.retweetCount = tweet.retweetCount;
-                [self refreshData];
+                strongSelf.tweet.retweeted = YES;
+                strongSelf.tweet.retweetCount = tweet.retweetCount;
+                [strongSelf refreshData];
             } else {
                 NSLog(@"Error retweeting tweet");
             }
         }];
     }
     else{
+        __weak typeof(self) weakSelf = self;
         [[APIManager shared]unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            __strong typeof (self) strongSelf = weakSelf;
             if (tweet) {
                 //self.tweet = tweet;
-                self.tweet.retweeted=NO;
-                self.tweet.retweetCount = tweet.retweetCount-1;
-                [self refreshData];
+                strongSelf.tweet.retweeted=NO;
+                strongSelf.tweet.retweetCount = tweet.retweetCount-1;
+                [strongSelf refreshData];
                 
             } else {
                 NSLog(@"Error unretweeting tweet");

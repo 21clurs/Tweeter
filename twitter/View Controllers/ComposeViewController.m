@@ -29,26 +29,30 @@
 - (IBAction)publishTweetAction:(id)sender {
     NSString *tweetText = self.composeTextView.text;
     if(self.replyToTweet != nil){
+        __weak typeof(self) weakSelf = self;
         [[APIManager shared] postWithUpdate:tweetText replyTo:self.replyToTweet.idStr completion:^(Tweet *tweet, NSError *error) {
+            __strong typeof(self) strongSelf = weakSelf;
             if(error){
                 NSLog(@"Error composing Tweet: %@", error.localizedDescription);
             }
             else{
-                [self dismissViewControllerAnimated:YES completion:nil];
-                [self.delegate didTweet:tweet];
+                [strongSelf dismissViewControllerAnimated:YES completion:nil];
+                [strongSelf.delegate didTweet:tweet];
                 NSLog(@"Compose Tweet Success!");
             }
         }];
         
     }
     else{
+        __weak typeof(self) weakSelf = self;
         [[APIManager shared] postStatusWithUpdate:tweetText completion:^(Tweet *tweet, NSError *error) {
+            __strong typeof(self) strongSelf = weakSelf;
             if (error){
                 NSLog(@"Error composing Tweet: %@", error.localizedDescription);
             }
             else {
-                [self dismissViewControllerAnimated:YES completion:nil];
-                [self.delegate didTweet:tweet];
+                [strongSelf dismissViewControllerAnimated:YES completion:nil];
+                [strongSelf.delegate didTweet:tweet];
                 NSLog(@"Compose Tweet Success!");
             }
         }];

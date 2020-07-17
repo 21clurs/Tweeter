@@ -44,16 +44,18 @@
 
 - (void)getTimeline{
     // Get timeline
+    __weak typeof(self) weakSelf = self;
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+        __strong typeof (self) strongSelf = weakSelf;
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            self.tweets = [tweets mutableCopy];
-            [self.tableView reloadData];
+            strongSelf.tweets = [tweets mutableCopy];
+            [strongSelf.tableView reloadData];
              
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
-        [self.refreshControl endRefreshing];
+        [strongSelf.refreshControl endRefreshing];
     }];
 }
 

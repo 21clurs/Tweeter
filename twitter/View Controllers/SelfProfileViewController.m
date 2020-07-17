@@ -29,10 +29,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    __weak typeof(self) weakSelf = self;
     [[APIManager shared] getSelfProfileWithCompletion:^(NSDictionary *userInfo, NSError *error) {
-        self.user = [[User alloc] initWithDictionary:userInfo];
-        [self refreshData];
+        __strong typeof(self) strongSelf = weakSelf;
+        strongSelf.user = [[User alloc] initWithDictionary:userInfo];
+        [strongSelf refreshData];
     }];
     [self refreshData];
 }
